@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aubert Nolan — Projets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/layout.css" />
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/animations.css" />
+  </head>
+  <body>
+
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <span class="navbar-logo">AN</span>
+        <span class="navbar-name">Aubert <strong>Nolan</strong></span>
+      </div>
+      <button class="navbar-burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="../index.html"               class="nav-link">Accueil</a></li>
+        <li><a href="projets.html"                class="nav-link active">Projets</a></li>
+        <li><a href="entreprise.html"             class="nav-link">Entreprise</a></li>
+        <li><a href="certifications.html"         class="nav-link">Certifications</a></li>
+        <li><a href="cv.html"                     class="nav-link">CV</a></li>
+        <li><a href="veille.html"                 class="nav-link">Veille techno</a></li>
+      </ul>
+    </nav>
+
+    <div class="page-wrapper">
+      <div class="page-header">
+        <div class="page-header__tag">BTS SIO SISR</div>
+        <h1 class="page-header__title">Projets</h1>
+        <p class="page-header__sub">Travaux pratiques et réalisations techniques</p>
+      </div>
+
+      <section class="section">
+        <h2 class="section-title">Projets réseaux</h2>
+
+        <article class="card card--alt">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Réseau d'entreprise simulé</div>
+              <div class="card-sub">Cisco Packet Tracer · TP BTS</div>
+            </div>
+            <div class="badge badge--green">2025</div>
+          </div>
+          <p class="card-desc">
+            Configuration de VLANs, routage inter-VLAN, mise en place de
+            règles pare-feu et services DHCP/DNS sur un réseau simulé
+            d'une PME fictive.
+          </p>
+          <div class="card-tags">
+            <span class="skill-tag">VLAN</span>
+            <span class="skill-tag">Routage</span>
+            <span class="skill-tag">DHCP</span>
+            <span class="skill-tag">DNS</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Déploiement Active Directory</div>
+              <div class="card-sub">Windows Server 2022 · TP BTS</div>
+            </div>
+            <div class="badge badge--green">2025</div>
+          </div>
+          <p class="card-desc">
+            Création d'un domaine Windows, gestion des utilisateurs et
+            groupes, mise en place de stratégies de groupe (GPO) pour
+            sécuriser les postes clients.
+          </p>
+          <div class="card-tags">
+            <span class="skill-tag">Active Directory</span>
+            <span class="skill-tag">GPO</span>
+            <span class="skill-tag">Windows Server</span>
+          </div>
+        </article>
+
+        <article class="card card--alt">
+          <div class="card-head">
+            <div>
+              <div class="card-title">Mise en place d'un pare-feu pfSense</div>
+              <div class="card-sub">pfSense · VirtualBox · TP BTS</div>
+            </div>
+            <div class="badge">2024</div>
+          </div>
+          <p class="card-desc">
+            Installation et configuration d'un pare-feu pfSense en
+            environnement virtualisé. Définition de règles de filtrage,
+            configuration d'un VPN site-à-site.
+          </p>
+          <div class="card-tags">
+            <span class="skill-tag">pfSense</span>
+            <span class="skill-tag">Firewall</span>
+            <span class="skill-tag">VPN</span>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <footer class="site-footer">
+      <span><span class="status-dot"></span>Disponible — alternance en cours</span>
+      <span>Aubert Nolan · BTS SIO SISR · 2026</span>
+    </footer>
+
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
