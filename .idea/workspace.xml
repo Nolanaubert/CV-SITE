@@ -2,13 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2811d476-d649-4ee5-b4ef-f5a774154031" name="Changes" comment="TEST">
-      <change beforePath="$PROJECT_DIR$/.idea/Nolanaubert.github.io.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CNAME" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/veille.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/certifications.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/certifications.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/cv.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cv.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/entreprise.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/entreprise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/projets.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/projets.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/veille.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/veille.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/animations.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/components.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/layout.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/navbar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/variables.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/bars.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/navbar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,18 +60,26 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.projets.html.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SNolan\Desktop\Nolanaubert.github.io\assets" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -66,6 +97,12 @@
       <workItem from="1776080600324" duration="1656000" />
       <workItem from="1776082276852" duration="454000" />
       <workItem from="1776082742038" duration="2997000" />
+      <workItem from="1776240817806" duration="425000" />
+      <workItem from="1776241264649" duration="679000" />
+      <workItem from="1776243202385" duration="4033000" />
+      <workItem from="1776252619425" duration="58000" />
+      <workItem from="1776253161079" duration="3667000" />
+      <workItem from="1776257220369" duration="2944000" />
     </task>
     <task id="LOCAL-00001" summary="changement de nom pour reflection directement">
       <option name="closed" value="true" />
