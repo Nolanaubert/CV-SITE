@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Éditeur TP — Aubert Nolan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/reset.css" />
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/tp-editor.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <span class="navbar-logo">AN</span>
+      <span class="navbar-name">Aubert <strong>Nolan</strong></span>
+    </div>
+    <button class="navbar-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="../index.html"           class="nav-link">Accueil</a></li>
+      <li><a href="projets.html"            class="nav-link">Projets</a></li>
+      <li><a href="entreprise.html"         class="nav-link">Entreprise</a></li>
+      <li><a href="certifications.html"     class="nav-link">Certifications</a></li>
+      <li><a href="cv.html"                 class="nav-link">CV</a></li>
+      <li><a href="veille.html"             class="nav-link">Veille techno</a></li>
+      <li><a href="tp.html"                 class="nav-link">TP</a></li>
+      <li><a href="tp-editor.html"          class="nav-link active">✎ Éditeur</a></li>
+    </ul>
+  </nav>
+
+  <!-- LAYOUT ÉDITEUR -->
+  <div class="editor-layout">
+
+    <!-- ── PANNEAU GAUCHE ── -->
+    <aside class="editor-panel">
+      <div class="editor-panel__head">
+        <span class="editor-panel__title">Mes TP</span>
+      </div>
+      <div class="editor-panel__body" id="editor-panel-body">
+        <!-- Rendu par JS -->
+      </div>
+    </aside>
+
+    <!-- ── ZONE D'ÉDITION ── -->
+    <div class="editor-main" id="editor-main">
+      <!-- Rendu par JS -->
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="editor-toast" id="editor-toast"></div>
+
+  <script src="../assets/js/navbar.js"></script>
+  <script src="../assets/js/tp-editor.js"></script>
+</body>
+</html>

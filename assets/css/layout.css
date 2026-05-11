@@ -1,5 +1,5 @@
 /* ============================================================
-   layout.css — Structure de page, grille, en-tête, pied de page
+   layout.css
    ============================================================ */
 
 body {
@@ -8,18 +8,62 @@ body {
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.6;
-
-  padding-top: 56px; /* ← EXACTEMENT la hauteur de ta navbar */
+  padding-top: 56px;
 }
 
-/* ── Conteneur principal ── */
+/* ── Conteneur CV ── */
 .cv-root {
   max-width: 860px;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-lg);
 }
 
-/* ── En-tête ── */
+/* ── Wrapper pages normales ── */
+.page-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+/* ── Header hero (accueil) ── */
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+.hero-left { flex: 1; min-width: 220px; }
+.hero-right {
+  text-align: right;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 2;
+  flex-shrink: 0;
+}
+.hero-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  background: var(--bg-3);
+  border: 1px solid var(--accent);
+  padding: 3px 10px;
+}
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* ── Header classique (CV) ── */
 .header {
   display: flex;
   align-items: flex-start;
@@ -28,8 +72,8 @@ body {
   padding-bottom: var(--space-xl);
   border-bottom: 1px solid var(--border);
   margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
 }
-
 .header-right {
   text-align: right;
   font-size: 13px;
@@ -37,6 +81,31 @@ body {
   line-height: 2;
   flex-shrink: 0;
 }
+
+/* ── En-tête de page intérieure ── */
+.page-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid var(--border);
+}
+.page-header__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+.page-header__title {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  margin-bottom: var(--space-sm);
+}
+.page-header__sub { color: var(--muted); font-size: 14px; }
 
 /* ── Grille 2 colonnes ── */
 .grid-2 {
@@ -46,11 +115,69 @@ body {
 }
 
 /* ── Sections ── */
-.section {
-  margin-bottom: var(--space-xl);
+.section { margin-bottom: var(--space-xl); }
+
+/* ── Barres ── */
+.bars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2rem;
 }
 
-/* ── Pied de page ── */
+/* ── Cards rapides accueil ── */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.quick-card {
+  display: block;
+  text-decoration: none;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  padding: var(--space-md) 1.2rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.quick-card:nth-child(even) { border-top-color: var(--accent-2); }
+.quick-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.quick-card__icon { font-size: 1.4rem; color: var(--accent); margin-bottom: var(--space-sm); line-height: 1; }
+.quick-card:nth-child(even) .quick-card__icon { color: var(--accent-2); }
+.quick-card__title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.quick-card__sub { font-size: 12px; color: var(--muted); }
+
+/* ── Boutons ── */
+.btn {
+  display: inline-block;
+  padding: 8px 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn--primary { background: var(--accent); color: var(--bg); border: 1px solid var(--accent); }
+.btn--primary:hover { background: transparent; color: var(--accent); }
+.btn--ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+.btn--ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Card tags ── */
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+
+/* ── Footer site ── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 .footer-line {
   border-top: 1px solid var(--border);
   margin-top: var(--space-xl);
@@ -61,32 +188,30 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 640px) {
-  .header {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
+/* ════════════ RESPONSIVE ════════════ */
+@media (max-width: 768px) {
+  .page-wrapper,
+  .cv-root { padding: var(--space-md); }
 
-  .header-right {
-    text-align: left;
-  }
+  .hero { flex-direction: column; gap: var(--space-md); }
+  .hero-right { text-align: left; }
+  .hero-actions { flex-direction: column; }
 
-  .contact-item {
-    justify-content: flex-start !important;
-    flex-direction: row-reverse;
-  }
+  .header { flex-direction: column; gap: var(--space-md); }
+  .header-right { text-align: left; }
 
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
+  .contact-item { justify-content: flex-start !important; flex-direction: row-reverse; }
+
+  .grid-2 { grid-template-columns: 1fr; }
+  .bars-grid { grid-template-columns: 1fr; }
 }
 
-
-.page-wrapper {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-lg);
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  .page-header__title { font-size: 1.5rem; }
+  .cards-row { grid-template-columns: 1fr 1fr; }
 }

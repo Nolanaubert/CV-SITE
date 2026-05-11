@@ -1,0 +1,62 @@
+{
+  "subjects": [
+    {
+      "id": "reseau",
+      "label": "Réseau",
+      "color": "var(--accent)",
+      "tps": [
+        {
+          "id": "reseau-vlan",
+          "title": "TP 1 — Configuration VLANs Cisco",
+          "badge": "Réseau",
+          "duration": "2h",
+          "level": "Débutant",
+          "tool": "Cisco Packet Tracer",
+          "blocks": [
+            {
+              "type": "text",
+              "content": "Un VLAN (Virtual Local Area Network) permet de segmenter logiquement un réseau physique en plusieurs réseaux distincts au niveau de la couche 2 du modèle OSI."
+            },
+            {
+              "type": "code",
+              "lang": "IOS — Cisco",
+              "content": "Switch> enable\nSwitch# configure terminal\n\nSwitch(config)# vlan 10\nSwitch(config-vlan)# name VLAN_ADMIN\nSwitch(config-vlan)# exit"
+            },
+            {
+              "type": "note",
+              "noteType": "info",
+              "content": "Prérequis : avoir Cisco Packet Tracer 8+ installé."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linux",
+      "label": "Linux",
+      "color": "#f59e0b",
+      "tps": [
+        {
+          "id": "linux-base",
+          "title": "TP 1 — Commandes de base",
+          "badge": "Linux",
+          "duration": "1h30",
+          "level": "Débutant",
+          "tool": "Ubuntu 22.04",
+          "blocks": [
+            {
+              "type": "text",
+              "content": "Dans ce TP, nous allons découvrir les commandes fondamentales de Linux."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "windows",
+      "label": "Windows Server",
+      "color": "var(--accent-2)",
+      "tps": []
+    }
+  ]
+}
