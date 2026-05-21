@@ -7,7 +7,7 @@
       "tps": [
         {
           "id": "reseau-vlan",
-          "title": "TP 1 — Configuration VLANs Cisco",
+          "title": "TP 1 — Project DMZ",
           "badge": "Réseau",
           "duration": "2h",
           "level": "Débutant",
@@ -18,14 +18,24 @@
               "content": "Un VLAN (Virtual Local Area Network) permet de segmenter logiquement un réseau physique en plusieurs réseaux distincts au niveau de la couche 2 du modèle OSI."
             },
             {
-              "type": "code",
-              "lang": "IOS — Cisco",
-              "content": "Switch> enable\nSwitch# configure terminal\n\nSwitch(config)# vlan 10\nSwitch(config-vlan)# name VLAN_ADMIN\nSwitch(config-vlan)# exit"
-            },
-            {
               "type": "note",
               "noteType": "info",
               "content": "Prérequis : avoir Cisco Packet Tracer 8+ installé."
+            },
+            {
+              "type": "screenshot",
+              "content": "assets/img/TOPOLOGIE DMZ.png",
+              "caption": "CAPTURE - TOPOLOGIE DMZ "
+            },
+            {
+              "type": "code",
+              "content": "en\nconf t\nint ran f0/4-19, g0/1-2\nswitchport access vlan 999\nshut\nint ran f0/1-23, g0/1-2\nswitchport mode access\nswitchport port-security\nswitchport port-security mac-address sticky\nint f0/1\nswitchport access vlan 20\nint ran f0/2-3\nswitchport access vlan 10\nint f0/20\nswitchport access vlan 30\nint f0/21\nswitchport access vlan 40\nint ran f0/22-23\nswitchport access vlan 50\nend\nwr",
+              "lang": "CISCO - IOS"
+            },
+            {
+              "type": "note",
+              "content": "en = Enable // Activé le mode développements\nshut = shutdown  \nconf t = configure Terminal // \nint ran = interface range // Configuration d'une interface\nwr = Write // Sauvegarder la configurations ",
+              "noteType": "warn"
             }
           ]
         }
@@ -47,6 +57,89 @@
             {
               "type": "text",
               "content": "Dans ce TP, nous allons découvrir les commandes fondamentales de Linux."
+            }
+          ]
+        },
+        {
+          "id": "5i7822r",
+          "title": "TP 2 —  Creation NEXTCLOUD",
+          "badge": "Linux",
+          "duration": "2h",
+          "level": "Débutant",
+          "tool": "PROXMOX",
+          "blocks": [
+            {
+              "type": "step",
+              "content": "création de la machine DEBIAN ",
+              "stepTitle": "Création de la machine "
+            },
+            {
+              "type": "step",
+              "content": "essai",
+              "stepTitle": "essai"
+            },
+            {
+              "type": "step",
+              "content": "essai",
+              "stepTitle": "essai"
+            }
+          ]
+        },
+        {
+          "id": "qayr7by",
+          "title": "TP 3 — OPENLDAP",
+          "badge": "Linux",
+          "duration": "1h",
+          "level": "Intermédiaire",
+          "tool": "PROXMOX / SSH",
+          "blocks": [
+            {
+              "type": "text",
+              "content": "Installation de LDAP ainsi que de Ubuntu server sur un environnement virtuel ( PROXMOX )"
+            },
+            {
+              "type": "code",
+              "content": "sudo apt install apache2 php php-cgi libapache2-mod-php php-mbstring php-common php-pear -y\n\t\nsudo apt install slapd ldap-utils -y\n\nsudo slapcat\n\nsudo apt -y install ldap-account-manager\n\nsudo a2enconf php*-cgi\n\nsudo systemctl restart apache2\n\nsudo systemctl enable apache2\n\nsudo systemctl status apache2\n\nsudo ufw status\n\nsudo ufw enable \n\nsudo ufw allow 80\n\nsudo ufw allow 443\n\nsudo ufw allow 389",
+              "lang": "BASH"
+            },
+            {
+              "type": "step",
+              "content": "Nous mettons en place dès le début le renouvellement des paquets UBUNTU ",
+              "stepTitle": "Maintien à jour des paquets "
+            },
+            {
+              "type": "code",
+              "content": "sudo apt update & sudo apt upgrade\n",
+              "lang": "Bash"
+            },
+            {
+              "type": "text",
+              "content": "nous allons voir verifier puis mettre un HOSTNAME "
+            },
+            {
+              "type": "code",
+              "content": "hostname\n\nhostnamectl set-hostname ldap.NOM.local",
+              "lang": "Bash"
+            },
+            {
+              "type": "step",
+              "content": "",
+              "stepTitle": "Ajout de l'ip au hostname "
+            },
+            {
+              "type": "code",
+              "content": "sudo nano /etc/hosts\n \n# X.X.X.X ldap.HOSTNAME.local",
+              "lang": "bash"
+            },
+            {
+              "type": "step",
+              "content": "",
+              "stepTitle": "Installation des Paquet SERVEUR WEB"
+            },
+            {
+              "type": "code",
+              "content": "sudo apt install apache2 php php-cgi libapache2-mod-php php-mbstring php-common php-pear -y\n",
+              "lang": "bash"
             }
           ]
         }
