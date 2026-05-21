@@ -213,3 +213,37 @@
   margin-right: 6px;
   vertical-align: middle;
 }
+/* ── Social links ── */
+.social-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border: 1px solid rgba(0, 240, 160, 0.2);   /* adapte à ta var de couleur accent */
+  border-radius: 3px;
+  color: var(--color-text);                    /* ta variable de texte existante */
+  text-decoration: none;
+  font-family: var(--font-mono);               /* Share Tech Mono */
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.social-link:hover {
+  background: rgba(0, 240, 160, 0.08);
+  border-color: var(--color-accent);           /* ta variable accent */
+  color: var(--color-accent);
+}
+
+.social-link svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  flex-shrink: 0;
+}

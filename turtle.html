@@ -1,0 +1,326 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { overflow: hidden; }
+  #scene {
+    width: 100%;
+    height: 520px;
+    background: linear-gradient(180deg, #87CEEB 0%, #87CEEB 55%, #5a9e3a 55%, #4a8a2e 100%);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    font-family: 'Fredoka One', cursive, sans-serif;
+    border-radius: 12px;
+  }
+  .cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50px;
+    opacity: 0.85;
+    animation: cloudMove linear infinite;
+  }
+  .cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+  }
+  @keyframes cloudMove {
+    from { transform: translateX(-200px); }
+    to { transform: translateX(110vw); }
+  }
+  .sun {
+    position: absolute;
+    top: 20px; right: 60px;
+    width: 70px; height: 70px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #FFD700aa;
+    animation: sunPulse 3s ease-in-out infinite;
+  }
+  @keyframes sunPulse {
+    0%,100% { box-shadow: 0 0 30px #FFD700aa; }
+    50% { box-shadow: 0 0 55px #FFD700cc; }
+  }
+  .ground-line {
+    position: absolute;
+    bottom: 145px;
+    width: 100%;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, #b8860b 0px, #b8860b 30px, transparent 30px, transparent 40px);
+    opacity: 0.4;
+  }
+  .title {
+    position: absolute;
+    top: 18px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+    color: #1a4a8a;
+    text-shadow: 2px 2px 0 #fff, -1px -1px 0 #fff;
+    white-space: nowrap;
+    user-select: none;
+    letter-spacing: 1px;
+  }
+  .hint {
+    position: absolute;
+    bottom: 18px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    color: #2d6a1a;
+    background: rgba(255,255,255,0.65);
+    padding: 5px 18px;
+    border-radius: 20px;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .score {
+    position: absolute;
+    top: 18px; left: 22px;
+    font-size: 18px;
+    color: #1a4a8a;
+    background: rgba(255,255,255,0.7);
+    padding: 4px 14px;
+    border-radius: 20px;
+    user-select: none;
+  }
+  .turtle {
+    position: absolute;
+    bottom: 148px;
+    width: 80px;
+    height: 56px;
+    cursor: pointer;
+    transition: filter 0.1s;
+    user-select: none;
+  }
+  .turtle.shake {
+    animation: turtleShake 0.18s ease;
+  }
+  @keyframes turtleShake {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-8px) rotate(-5deg); }
+    60% { transform: translateY(-4px) rotate(4deg); }
+  }
+  .turtle svg { width: 100%; height: 100%; }
+  .poof {
+    position: absolute;
+    font-size: 22px;
+    pointer-events: none;
+    animation: poofUp 0.7s ease forwards;
+    user-select: none;
+    z-index: 20;
+  }
+  @keyframes poofUp {
+    0% { opacity: 1; transform: scale(0.5) translateY(0); }
+    60% { opacity: 1; transform: scale(1.3) translateY(-30px); }
+    100% { opacity: 0; transform: scale(1) translateY(-60px); }
+  }
+  .star {
+    position: absolute;
+    pointer-events: none;
+    animation: starFly linear forwards;
+    font-size: 18px;
+    z-index: 25;
+  }
+  @keyframes starFly {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-80px) scale(0.3); }
+  }
+  .bush {
+    position: absolute;
+    bottom: 145px;
+    border-radius: 50% 50% 0 0;
+    background: #3a8a22;
+  }
+  .flower {
+    position: absolute;
+    font-size: 20px;
+    bottom: 153px;
+    user-select: none;
+  }
+  .finish-flag {
+    position: absolute;
+    bottom: 148px;
+    right: 40px;
+    font-size: 36px;
+    user-select: none;
+  }
+  .congrats {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(255,255,255,0.95);
+    border-radius: 16px;
+    padding: 24px 36px;
+    text-align: center;
+    font-size: 22px;
+    color: #1a4a8a;
+    z-index: 50;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+  }
+  .congrats.show { transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
+  .congrats .sub { font-size: 15px; color: #555; margin-top: 8px; }
+  .restart-btn {
+    margin-top: 14px;
+    padding: 8px 24px;
+    font-size: 16px;
+    font-family: inherit;
+    background: #3a8a22;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+</style>
+
+<div id="scene">
+  <div class="sun"></div>
+  <div class="title">🐢 Turtle Dash!</div>
+  <div class="score" id="score">Clics : 0</div>
+
+  <div class="cloud" style="width:90px;height:30px;top:70px;animation-duration:18s;animation-delay:0s">
+    <div style="position:absolute;width:50px;height:45px;border-radius:50%;background:white;top:-22px;left:12px"></div>
+    <div style="position:absolute;width:35px;height:35px;border-radius:50%;background:white;top:-18px;left:38px"></div>
+  </div>
+  <div class="cloud" style="width:70px;height:25px;top:110px;animation-duration:24s;animation-delay:-8s">
+    <div style="position:absolute;width:40px;height:38px;border-radius:50%;background:white;top:-18px;left:8px"></div>
+    <div style="position:absolute;width:28px;height:28px;border-radius:50%;background:white;top:-14px;left:32px"></div>
+  </div>
+  <div class="cloud" style="width:110px;height:34px;top:50px;animation-duration:30s;animation-delay:-15s">
+    <div style="position:absolute;width:60px;height:50px;border-radius:50%;background:white;top:-24px;left:15px"></div>
+    <div style="position:absolute;width:42px;height:42px;border-radius:50%;background:white;top:-20px;left:55px"></div>
+  </div>
+
+  <div class="ground-line"></div>
+
+  <div class="bush" style="width:55px;height:38px;left:120px"></div>
+  <div class="bush" style="width:40px;height:28px;left:310px"></div>
+  <div class="bush" style="width:65px;height:42px;left:500px"></div>
+  <div class="flower" style="left:85px">🌸</div>
+  <div class="flower" style="left:370px">🌼</div>
+  <div class="flower" style="left:580px">🌺</div>
+  <div class="finish-flag">🏁</div>
+
+  <div class="turtle" id="turtle">
+    <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="40" cy="30" rx="28" ry="20" fill="#4CAF50" stroke="#2e7d32" stroke-width="2"/>
+      <ellipse cx="40" cy="30" rx="20" ry="14" fill="#388E3C"/>
+      <polygon points="40,16 34,20 46,20" fill="#66BB6A" stroke="#2e7d32" stroke-width="1"/>
+      <polygon points="40,44 34,40 46,40" fill="#66BB6A" stroke="#2e7d32" stroke-width="1"/>
+      <polygon points="12,24 18,22 16,30" fill="#66BB6A" stroke="#2e7d32" stroke-width="1"/>
+      <polygon points="68,24 62,22 64,30" fill="#66BB6A" stroke="#2e7d32" stroke-width="1"/>
+      <ellipse cx="58" cy="28" rx="11" ry="8" fill="#A5D6A7" stroke="#2e7d32" stroke-width="1.5"/>
+      <circle cx="62" cy="26" r="2.5" fill="#1a237e"/>
+      <circle cx="63.2" cy="25.2" r="0.9" fill="white"/>
+      <line x1="66" y1="24" x2="70" y2="21" stroke="#2e7d32" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="67" y1="25.5" x2="71" y2="23" stroke="#2e7d32" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="40" y1="22" x2="40" y2="38" stroke="#2e7d32" stroke-width="1.2" opacity="0.5"/>
+      <line x1="30" y1="27" x2="50" y2="27" stroke="#2e7d32" stroke-width="1.2" opacity="0.5"/>
+      <ellipse id="leg-fl" cx="22" cy="38" rx="7" ry="4" fill="#66BB6A" stroke="#2e7d32" stroke-width="1.2"/>
+      <ellipse id="leg-fr" cx="58" cy="38" rx="7" ry="4" fill="#66BB6A" stroke="#2e7d32" stroke-width="1.2"/>
+    </svg>
+  </div>
+
+  <div class="hint" id="hint">Clique sur la tortue pour la faire courir ! 🐢</div>
+  <div class="congrats" id="congrats">
+    <div>🎉 Bravo !</div>
+    <div class="sub">La tortue a atteint l'arrivée !</div>
+    <button class="restart-btn" id="restartBtn">Rejouer</button>
+  </div>
+</div>
+
+<script>
+const scene = document.getElementById('scene');
+const turtle = document.getElementById('turtle');
+const scoreEl = document.getElementById('score');
+const hintEl = document.getElementById('hint');
+const congrats = document.getElementById('congrats');
+const restartBtn = document.getElementById('restartBtn');
+
+let clicks = 0;
+let posX = 20;
+let finished = false;
+const trackWidth = () => scene.offsetWidth - 120;
+const GOAL = 1;
+
+function getTurtleX() { return posX; }
+
+const emojis = ['✨','💨','⭐','🌟','💥'];
+
+function spawnPoof(x, y) {
+  const p = document.createElement('div');
+  p.className = 'poof';
+  p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  p.style.left = (x + Math.random()*30 - 15) + 'px';
+  p.style.bottom = (160 + Math.random()*30) + 'px';
+  scene.appendChild(p);
+  setTimeout(() => p.remove(), 750);
+}
+
+function spawnStars(x) {
+  for (let i = 0; i < 4; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = '⭐';
+    s.style.left = (x + Math.random()*60 - 20) + 'px';
+    s.style.bottom = (170 + Math.random()*40) + 'px';
+    s.style.animationDuration = (0.5 + Math.random()*0.4) + 's';
+    s.style.animationDelay = (Math.random()*0.2) + 's';
+    scene.appendChild(s);
+    setTimeout(() => s.remove(), 900);
+  }
+}
+
+function updateTurtle() {
+  turtle.style.left = posX + 'px';
+}
+
+function moveTurtle() {
+  if (finished) return;
+  clicks++;
+  scoreEl.textContent = 'Clics : ' + clicks;
+
+  const step = 18 + Math.random() * 18;
+  posX = Math.min(posX + step, trackWidth());
+
+  turtle.classList.remove('shake');
+  void turtle.offsetWidth;
+  turtle.classList.add('shake');
+
+  spawnPoof(posX, 148);
+  updateTurtle();
+
+  if (clicks >= 3) hintEl.style.display = 'none';
+
+  if (posX >= trackWidth()) {
+    finished = true;
+    spawnStars(posX);
+    setTimeout(() => {
+      congrats.classList.add('show');
+    }, 400);
+  }
+}
+
+turtle.addEventListener('click', function(e) {
+  e.stopPropagation();
+  moveTurtle();
+});
+
+scene.addEventListener('click', function(e) {
+  if (!finished) moveTurtle();
+});
+
+restartBtn.addEventListener('click', function() {
+  clicks = 0;
+  posX = 20;
+  finished = false;
+  scoreEl.textContent = 'Clics : 0';
+  hintEl.style.display = '';
+  congrats.classList.remove('show');
+  updateTurtle();
+});
+
+updateTurtle();
+</script>
