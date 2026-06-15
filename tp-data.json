@@ -89,57 +89,79 @@
           "id": "qayr7by",
           "title": "TP 3 — OPENLDAP",
           "badge": "Linux",
-          "duration": "1h",
+          "duration": "1H30",
           "level": "Intermédiaire",
           "tool": "PROXMOX / SSH",
           "blocks": [
             {
-              "type": "text",
-              "content": "Installation de LDAP ainsi que de Ubuntu server sur un environnement virtuel ( PROXMOX )"
+              "type": "note",
+              "content": "Configuration recommandée : Ubuntu Server, 120Go HDD, 4Go RAM, Réseau Bridge.",
+              "noteType": "info"
+            },
+            {
+              "type": "step",
+              "stepTitle": "1. Préparation du système",
+              "content": "Mise à jour des dépôts et du système."
             },
             {
               "type": "code",
-              "content": "sudo apt install apache2 php php-cgi libapache2-mod-php php-mbstring php-common php-pear -y\n\t\nsudo apt install slapd ldap-utils -y\n\nsudo slapcat\n\nsudo apt -y install ldap-account-manager\n\nsudo a2enconf php*-cgi\n\nsudo systemctl restart apache2\n\nsudo systemctl enable apache2\n\nsudo systemctl status apache2\n\nsudo ufw status\n\nsudo ufw enable \n\nsudo ufw allow 80\n\nsudo ufw allow 443\n\nsudo ufw allow 389",
+              "content": "sudo apt update && sudo apt upgrade -y",
               "lang": "BASH"
             },
             {
               "type": "step",
-              "content": "Nous mettons en place dès le début le renouvellement des paquets UBUNTU ",
-              "stepTitle": "Maintien à jour des paquets "
+              "stepTitle": "2. Configuration de l'identité (FQDN)",
+              "content": "Définition du nom d'hôte pour la structure de l'annuaire."
             },
             {
               "type": "code",
-              "content": "sudo apt update & sudo apt upgrade\n",
-              "lang": "Bash"
+              "content": "hostname\nhostnamectl set-hostname ldap.dirtech.local\nsudo nano /etc/hosts",
+              "lang": "BASH"
             },
             {
-              "type": "text",
-              "content": "nous allons voir verifier puis mettre un HOSTNAME "
-            },
-            {
-              "type": "code",
-              "content": "hostname\n\nhostnamectl set-hostname ldap.NOM.local",
-              "lang": "Bash"
+              "type": "note",
+              "content": "Dans /etc/hosts, ajoutez la ligne : 127.0.0.1 ldap.dirtech.local",
+              "noteType": "warn"
             },
             {
               "type": "step",
-              "content": "",
-              "stepTitle": "Ajout de l'ip au hostname "
+              "stepTitle": "3. Installation des services Web",
+              "content": "Installation d'Apache et PHP pour l'interface de gestion."
             },
             {
               "type": "code",
-              "content": "sudo nano /etc/hosts\n \n# X.X.X.X ldap.HOSTNAME.local",
-              "lang": "bash"
+              "content": "sudo apt install apache2 php php-cgi libapache2-mod-php php-mbstring php-common php-pear -y",
+              "lang": "BASH"
             },
             {
               "type": "step",
-              "content": "",
-              "stepTitle": "Installation des Paquet SERVEUR WEB"
+              "stepTitle": "4. Installation et vérification de LDAP",
+              "content": "Installation de Slapd (serveur) et Ldap-utils."
             },
             {
               "type": "code",
-              "content": "sudo apt install apache2 php php-cgi libapache2-mod-php php-mbstring php-common php-pear -y\n",
-              "lang": "bash"
+              "content": "sudo apt install slapd ldap-utils -y\nsudo slapcat",
+              "lang": "BASH"
+            },
+            {
+              "type": "step",
+              "stepTitle": "5. Gestionnaire de compte (LAM)",
+              "content": "Installation de LDAP Account Manager."
+            },
+            {
+              "type": "code",
+              "content": "sudo apt -y install ldap-account-manager\nsudo a2enconf php*-cgi\nsudo systemctl restart apache2\nsudo systemctl enable apache2\nsudo systemctl status apache2",
+              "lang": "BASH"
+            },
+            {
+              "type": "step",
+              "stepTitle": "6. Configuration du Pare-feu (UFW)",
+              "content": "Autorisation des ports HTTP, HTTPS et LDAP."
+            },
+            {
+              "type": "code",
+              "content": "sudo ufw enable\nsudo ufw allow 22\nsudo ufw allow 80\nsudo ufw allow 443\nsudo ufw allow 389\nsudo ufw status",
+              "lang": "BASH"
             }
           ]
         }
